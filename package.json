@@ -1,0 +1,18 @@
+{
+  "name": "webpack-template-literal-bug",
+  "version": "1.0.0",
+  "scripts": {
+    "build-babel": "babel --plugins @babel/plugin-transform-template-literals src/index.js -o dist/babel.js",
+    "build-webpack": "webpack --mode=development --devtool=none --output-filename=webpack.js",
+    "build-webpack-babel": "webpack --mode=development --devtool=none --output-filename=webpack-babel.js --module-bind js='babel-loader?plugins[]=@babel/plugin-transform-template-literals'",
+    "postinstall": "mkdir -p dist && npm run build-babel && npm run build-webpack && npm run build-webpack-babel"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-transform-template-literals": "^7.2.0",
+    "babel-loader": "^8.0.5",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
+  }
+}
